@@ -66,7 +66,6 @@ final class MomentViewController: UIViewController {
         self.tableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
-        // this is wrong!
         self.tableView.rx_reachedBottom
             .map { _ in () }
         	.bind(to: self.viewModel.loadNextPageTrigger)
