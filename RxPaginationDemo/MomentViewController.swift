@@ -57,8 +57,8 @@ final class MomentViewController: UIViewController {
     
     func setupRx() {
         
-        self.viewModel.posts.asObservable()
-            .bind(to: tableView.rx.items(cellIdentifier: MomentTableViewCellReusableIdentifier, cellType: MomentTableViewCell.self)) { index, model, cell in
+        self.viewModel.posts.asDriver()
+            .drive(tableView.rx.items(cellIdentifier: MomentTableViewCellReusableIdentifier, cellType: MomentTableViewCell.self)) { index, model, cell in
                 cell.configureWith(post: model)
             }
             .disposed(by: disposeBag)
@@ -80,9 +80,10 @@ final class MomentViewController: UIViewController {
             .bind(to: viewModel.refreshTrigger)
             .disposed(by: disposeBag)
         
-        self.viewModel.posts.asObservable().map { _ in false }
-        .bind(to: self.refreshControl.rx.isRefreshing)
-        .disposed(by: disposeBag)
+        self.viewModel.posts.asObservable()
+            .map { _ in false }
+        	.bind(to: self.refreshControl.rx.isRefreshing)
+        	.disposed(by: disposeBag)
     }
 }
 
