@@ -52,6 +52,7 @@ public final class MomentViewModel {
         .debug("nextPageRequest", trimOutput: true)
         
         let request = Observable.merge(refreshRequest, nextPageRequest)
+            .share(replay: 1)
         	.debug("Request", trimOutput: true)
         
         let response = request.flatMapLatest { page in
