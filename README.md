@@ -8,3 +8,4 @@ Features:
 - Use [Moya](https://github.com/Moya/Moya) as an abstract rx-network layer
 - Use [RxDataSouces](https://github.com/RxSwiftCommunity/RxDataSources) and [RxSwift](https://github.com/ReactiveX/RxSwift) as the generic abstraction of computation
 - Pagination network request
+- Pull to refresh with UIRefreshControl
