@@ -9,8 +9,8 @@ public final class MomentViewModel {
     // Property
     let refreshTrigger = PublishSubject<Void>()
     let loadNextPageTrigger = PublishSubject<Void>()
-    let loading = Variable<Bool>(false)
-    let posts = Variable<[Post]>([])
+    let loading = BehaviorRelay<Bool>(value: false)
+    let posts = BehaviorRelay<[Post]>(value: [])
     var pageIndex: Int = 0
     let error = PublishSubject<Swift.Error>()
     private let disposeBag = DisposeBag()
