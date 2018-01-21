@@ -25,14 +25,12 @@ public final class MomentViewModel {
                 } else {
                     return Observable<Int>.create { observer in
                         self.pageIndex = 0
-                        print("reset page index to 0")
                         observer.onNext(0)
                         observer.onCompleted()
                         return Disposables.create()
                     }
                 }
         }
-        .debug("refreshRequest", trimOutput: true)
         
         let nextPageRequest = loading.asObservable()
             .sample(loadNextPageTrigger)
@@ -49,18 +47,15 @@ public final class MomentViewModel {
                     }
                 }
         }
-        .debug("nextPageRequest", trimOutput: true)
         
         let request = Observable.merge(refreshRequest, nextPageRequest)
             .share(replay: 1)
-        	.debug("Request", trimOutput: true)
         
         let response = request.flatMapLatest { page in
             	RxAPIProvider.shared.getPostList(page: page).materialize()
             }
             .share(replay: 1)
             .elements()
-            .debug("Response", trimOutput: true)
         
         Observable
             .combineLatest(request, response, posts.asObservable()) { request, response, posts in
