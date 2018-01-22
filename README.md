@@ -4,8 +4,9 @@ Demonstrate how to use RxSwift and RxDataSources to make a simple network reques
 
 Features:
 
-- Use [Argo](https://github.com/thoughtbot/Argo), [Curry](https://github.com/thoughtbot/Curry) and [Runes](https://github.com/thoughtbot/Runes) for JSON Serialization
+- Use [Argo](https://github.com/thoughtbot/Argo), [Curry](https://github.com/thoughtbot/Curry) and [Runes](https://github.com/thoughtbot/Runes) for functional JSON serialization
 - Use [Moya](https://github.com/Moya/Moya) as an abstract rx-network layer
 - Use [RxDataSouces](https://github.com/RxSwiftCommunity/RxDataSources) and [RxSwift](https://github.com/ReactiveX/RxSwift) as the generic abstraction of computation
 - Pagination network request
 - Pull to refresh with UIRefreshControl
+- MVVM architectural pattern
